@@ -128,19 +128,17 @@ export default {
     async evaluate() {
       if (this.expression) {
         await this.generateContextMap();
-        console.log(this.contextMap);
         this.status = expressionEvaluator(this.expression, this.contextMap);
       }
       console.log(`status ${this.status}`);
     },
     generateContextMap() {
       this.contextMapArray.forEach((element) => {
-        this.contextMap[`{` + element.qcode + `}`] = element.value;
+        this.contextMap[element.qcode] = element.value;
       });
     },
     addQcode() {
       this.contextMapArray.push({ qcode: "QCode", value: "" });
-      console.log(this.contextMap);
     },
   },
 };
