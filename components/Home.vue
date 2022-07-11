@@ -78,7 +78,10 @@
             />
           </svg>
         </button>
-        <button class="btn btn-circle btn-success btn-sm mt-1" @click="addQcode()">
+        <button
+          class="btn btn-circle btn-success btn-sm mt-1"
+          @click="addQcode()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
@@ -127,7 +130,9 @@ export default {
   methods: {
     async evaluate() {
       if (this.expression) {
+        debugger
         await this.generateContextMap();
+        console.log(`this.contextMap` + this.contextMap);
         this.status = expressionEvaluator(this.expression, this.contextMap);
       }
       console.log(`status ${this.status}`);
